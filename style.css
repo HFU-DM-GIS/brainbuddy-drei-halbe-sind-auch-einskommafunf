@@ -1,6 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: rgb(69, 110, 128);
+}
+
 .container {
-  text-align: center;
-  margin-top: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background: rgb(143, 176, 188);
+  padding: 40px 60px;
+}
+
+h1 {
+  font-size: 3em;
+  color: rgb(8, 2, 2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+h5 {
+  font-size: 1em;
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.reset {
+  padding: 15px 20px;
+  color: rgb(255, 255, 255);
+  background: rgb(106, 203, 255);
+  border: none;
+  font-size: 1.5em; /* Adjusted font size */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 .grid {
@@ -13,7 +57,7 @@
   width: 150px;
   height: 150px;
   margin: 10px;
-  background-color: #f2f2f2;
+  background-color: #d9f2f7;
   border-radius: 10px;
   cursor: pointer;
   display: flex;
@@ -40,3 +84,4 @@ span.flipped {
 .incorrect {
   background-color: red;
 }
+
