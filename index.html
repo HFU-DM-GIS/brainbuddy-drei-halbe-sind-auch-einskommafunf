@@ -3,23 +3,37 @@
   <head>
     <title>Memory Game</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="apikey.js" defer></script>
     <script src="script.js" defer></script>
   </head>
   <body>
     <div class="container">
       <h1>Brain Buddy</h1>
+      <div class="description"></div>
       <h5>pick a card to start the game</h5>
-      <div class="grid">
-        <div class="card" data-card="1"><span><img src="https://picsum.photos/140/140" alt=""></span></div>
-        <div class="card" data-card="2"><span><img src="https://picsum.photos/141/" alt=""></span></div>
-        <div class="card" data-card="3"><span><img src="https://picsum.photos/140/" alt=""></span></div>
-        <div class="card" data-card="4"><span><img src="https://picsum.photos/139/" alt=""></span></div>
-        <div class="card" data-card="1"><span><img src="https://picsum.photos/140/140" alt=""></span></div>
-        <div class="card" data-card="2"><span><img src="https://picsum.photos/141/" alt=""></span></div>
-        <div class="card" data-card="3"><span><img src="https://picsum.photos/140/" alt=""></span></div>
-        <div class="card" data-card="4"><span><img src="https://picsum.photos/139/" alt=""></span></div>
-      </div>
-      <button id ="reset" class="reset">Reset</button>
+
+    <form id="theme-form">
+        <label for="theme-input">Gib ein Thema ein:</label>
+        <input type="text" id="theme-input" required>
+    </form>
+  <form action="">
+      <label for="numberSelect">Kärtchenanzahl:</label>
+      <select id="numberSelect" onchange="updateValue()" required>
+        <option value="">-Anzahl wählen-</option>
+        <option value="4">8</option>
+        <option value="6">12</option>
+        <option value="8">16</option>
+        <option value="10">20</option>
+         </select>
+    </form>
+
+    <button class="start" type="button" onclick="initializeGame()">Starte das Spiel</button>
+
+    <div class="memory-game"></div>
+  <!--
+    <button id ="reset" class="reset">Reset</button>
+  -->
+     
     </div>
   </body>
 </html>
