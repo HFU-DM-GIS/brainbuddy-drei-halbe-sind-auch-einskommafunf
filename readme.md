@@ -1,5 +1,5 @@
 # Memory game
-Introduction
+## Introduction
 This is a simple memory game project, and this README will guide you on how to set it up and make it functional. 
 The game utilizes images from Unsplash, and to fetch these images, you need to obtain a free API key from [unsplash.com](https://unsplash.com/developers).
 
