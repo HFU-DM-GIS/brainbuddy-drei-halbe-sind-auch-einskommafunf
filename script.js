@@ -10,8 +10,7 @@ function flipCard() {
     if (lockBoard) return;
     if (this === firstCard) return;
     console.log(this.classList)
-    this.classList.add("selected");
-    this.classList.add("flipped");
+    this.classList.add("selected", "flipped");
     console.log(this.classList)
     if (!flippedCard) {
         flippedCard = true;
@@ -40,24 +39,25 @@ function disableCards() {
 function unflipCards() {
     lockBoard = true;
     setTimeout(() => {
-        firstCard.classList.remove("selected");
-        secondCard.classList.remove("selected");
-        firstCard.firstChild.classList.remove("flipped");
-        secondCard.firstChild.classList.remove("flipped");
+        cards.forEach(card => {
+            card.classList.remove("selected", "flipped");
+        });
         resetBoard();
     }, 1000);
 }
+
 
 function resetBoard() {
     [flippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
 }
 
-function resetGame() {
+function resetGame() { 
     cards.forEach(card => {
         card.classList.remove("selected", "correct");
         card.firstChild.classList.remove("flipped");
         card.addEventListener('click', flipCard);
+       
     });
 
     [flippedCard, lockBoard] = [false, false];
@@ -125,4 +125,32 @@ async function initializeGame() {
         const card = createCard(image.urls.small, index);
         memoryGame.appendChild(card);
     });
+}
+function startGame() {
+    const themeInput = document.getElementById('theme-input');
+    const errorMsg1 = document.querySelector('.error-msg1');
+    const numberSelect = document.getElementById('numberSelect');
+    const errorMsg2 = document.querySelector('.error-msg2');
+    let themeerror = false;
+    let numbererror = false;
+    if (themeInput.value.trim() === '') {
+        // Zeige die Fehlermeldung an, wenn das Feld nicht ausgefüllt ist
+        errorMsg1.style.display = 'block';
+        themeerror = true;
+    } else {
+        // Verberge die Fehlermeldung, wenn das Feld ausgefüllt ist
+        errorMsg1.style.display = 'none';
+    }
+
+    if (numberSelect.value.trim() === '') {
+        errorMsg2.style.display = 'block';
+        numbererror = true;
+    } else {
+        errorMsg2.style.display = 'none';
+    }
+
+    if (!themeerror && !numbererror) {
+        // Starte das Spiel nur, wenn keine Fehler vorliegen
+        initializeGame();
+    }
 }

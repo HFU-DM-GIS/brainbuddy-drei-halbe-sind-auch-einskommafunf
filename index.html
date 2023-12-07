@@ -10,7 +10,7 @@
     <div class="container">
       <h1>Brain Buddy</h1>
       <div class="description"></div>
-      <h5>pick a card to start the game</h5>
+      <h5>fülle die felder aus um zu starten</h5>
 
     <form id="theme-form">
         <label for="theme-input">Gib ein Thema ein:</label>
@@ -26,8 +26,11 @@
         <option value="10">20</option>
          </select>
     </form>
-
-    <button class="start" type="button" onclick="initializeGame()">Starte das Spiel</button>
+ <div class="error-msg">
+    <div class="error-msg1" style="display: none;">! Bitte gib ein Thema für dein Memoryspiel ein.</div>
+    <div class="error-msg2" style="display: none;">! Bitte gebe an mit wie vielen Kärtchen du spielen möchtest.</div>
+ </div>   
+    <button class="start" type="button" onclick="startGame()">Starte das Spiel</button>
 
     <div class="memory-game"></div>
   <!--
