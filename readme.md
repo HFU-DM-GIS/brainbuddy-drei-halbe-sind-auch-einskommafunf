@@ -1,6 +1,7 @@
 # Memory game
 Introduction
-This is a simple memory game project, and this README will guide you on how to set it up and make it functional. The game utilizes images from Unsplash, and to fetch these images, you need to obtain a free API key from unsplash.com.
+This is a simple memory game project, and this README will guide you on how to set it up and make it functional. 
+The game utilizes images from Unsplash, and to fetch these images, you need to obtain a free API key from [unsplash.com](https://unsplash.com/developers).
 
 ## Getting Started
 To get started with the memory game, follow these steps:
@@ -14,9 +15,9 @@ Visit unsplash.com and sign up for a free account. Once logged in, create a new 
 3. Insert API Key in JavaScript File
 Open the project directory and navigate to the js folder. Inside this folder, create a new file named apikey.js. In this file, add the following code:
 
-const apikey = "[YOUR_API_KEY]";
+`const apikey = "[YOUR_API_KEY]";`
 
-Replace [YOUR_API_KEY] with the API key you obtained from Unsplash.
+Replace `[YOUR_API_KEY]` with the API key you obtained from Unsplash.
 
 
 ## Usage
