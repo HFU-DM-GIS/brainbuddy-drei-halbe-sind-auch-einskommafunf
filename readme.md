@@ -15,9 +15,9 @@ Visit unsplash.com and sign up for a free account. Once logged in, create a new 
 3. Insert API Key in JavaScript File
 Open the project directory and navigate to the js folder. Inside this folder, create a new file named apikey.js. In this file, add the following code:
 
-`const apikey = "[YOUR_API_KEY]";`
+    `const apikey = "[YOUR_API_KEY]";`
 
-Replace `[YOUR_API_KEY]` with the API key you obtained from Unsplash.
+    Replace `[YOUR_API_KEY]` with the API key you obtained from Unsplash.
 
 
 ## Usage
