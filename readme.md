@@ -1,22 +1,25 @@
 # Memory game
-A simple memory game.
+Introduction
+This is a simple memory game project, and this README will guide you on how to set it up and make it functional. The game utilizes images from Unsplash, and to fetch these images, you need to obtain a free API key from unsplash.com.
 
-## Source
-This app has been created by Julian Katz (and ChatGPT).
+## Getting Started
+To get started with the memory game, follow these steps:
 
-## Bug reports
+1. Clone the Repository
+Clone this repository to your local machine.
 
-### Bug #01 Card layout not random
-The cards are always at the same position and hence there is no fun to play.
-#### how to reproduce
-The cards are always `[1][2][3][4][1][2][3][4]`.
-#### how to solve
-Add some random positions to the cards. Note that it makes sense to first generate a randomized list of all positions and then place the cards.
+2. Acquire Unsplash API Key
+Visit unsplash.com and sign up for a free account. Once logged in, create a new application to generate an API key.
 
-## Tasks
-1. Fix all bugs mentioned above.
-2. Replace the numbers on the cards with images.
-3. Let the user change the number of cards to play with.
-4. (Optional) Add a timer and save the times to finish in a leaderboard.
-5. Add a flipping animation for the cards.
-6. Use images that are taken from [the Unsplash API](https://unsplash.com/documentation#get-a-random-photo). Let the user choose a theme (query) and then get enough images for the cards.
+3. Insert API Key in JavaScript File
+Open the project directory and navigate to the js folder. Inside this folder, create a new file named apikey.js. In this file, add the following code:
+
+const apikey = "[YOUR_API_KEY]";
+
+Replace [YOUR_API_KEY] with the API key you obtained from Unsplash.
+
+
+## Usage
+Now that you have set up the project with your API key, you can run the game by opening the HTML file in a web browser. The game will use the Unsplash API to fetch images for the memory cards.
+
+Enjoy playing our memory game!
