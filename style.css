@@ -36,6 +36,10 @@ h5 {
   text-transform: uppercase;
   cursor: pointer;
   font-weight: 600; 
+  transition-duration: 0.5s;
+}
+.start:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 body {
   display: flex;

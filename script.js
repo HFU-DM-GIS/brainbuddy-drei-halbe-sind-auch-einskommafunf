@@ -53,12 +53,13 @@ function resetBoard() {
 }
 
 function resetGame() { 
-    cards.forEach(card => {
+    /*cards.forEach(card => {
         card.classList.remove("selected", "correct");
         card.firstChild.classList.remove("flipped");
-        card.addEventListener('click', flipCard);
-       
-    });
+        card.addEventListener('click', flipCard); });*/
+
+        const memoryGame = document.querySelector('.memory-game');
+        memoryGame.innerHTML = ''; // Entferne alle Kinder-Elemente
 
     [flippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
