@@ -10,7 +10,7 @@ function flipCard() {
     if (lockBoard) return;
     if (this === firstCard) return;
     console.log(this.classList)
-    this.classList.add("selected", "flipped");
+    this.classList.add("selected", "back-side");
     console.log(this.classList)
     if (!flippedCard) {
         flippedCard = true;
@@ -40,7 +40,7 @@ function unflipCards() {
     lockBoard = true;
     setTimeout(() => {
         cards.forEach(card => {
-            card.classList.remove("selected", "flipped");
+            card.classList.remove("selected", "front-side");
         });
         resetBoard();
     }, 1000);

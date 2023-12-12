@@ -73,7 +73,7 @@ body {
   width: 100px;
   height: 100px;
   position: absolute;
-  backface-visibility: hidden;
+  backface-visibility:visible;
   background-size:cover;
   transform: rotateY(180deg);
 }
