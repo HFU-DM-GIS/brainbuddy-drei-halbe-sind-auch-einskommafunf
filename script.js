@@ -1,5 +1,4 @@
-let cards = [];
-const resetButton = document.querySelector("#reset");
+
 let flippedCard = false;
 // Flag zum Verfolgen, ob eine Karte umgedreht ist
 let lockBoard = false;
