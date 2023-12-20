@@ -10,16 +10,16 @@ let firstCard, secondCard;
 function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
-
+  playSound("/soundfiles/CardsFlipCard_S08SP.149.wav");
   this.classList.add("selected", "back-side");
   changeVisibility(this, true);
-
   if (!flippedCard) {
     flippedCard = true;
     firstCard = this;
   } else {
     secondCard = this;
     checkForMatch();
+    
   }
 }
 
@@ -48,6 +48,7 @@ function disableCards() {
 
   firstCard.classList.add("correct");
   secondCard.classList.add("correct");
+  playSound("/soundfiles/mixkit-instant-win-2021.wav");
   resetBoard();
 }
 
@@ -161,4 +162,8 @@ function startGame() {
   if (!themeerror && !numbererror) {
     initializeGame();
   }
+}
+function playSound(soundFile) {
+  const audio = new Audio(soundFile);
+  audio.play();
 }
