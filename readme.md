@@ -17,7 +17,7 @@ Open the project directory and navigate to the js folder. Inside this folder, cr
 
     `const apikey = "[YOUR_API_KEY]";`
 
-    Replace `[YOUR_API_KEY]` with the API key you obtained from Unsplash.
+    Replace `[YOUR_API_KEY]` with the API key (Acces Key) you obtained from Unsplash.
 
 
 ## Usage

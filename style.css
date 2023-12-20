@@ -60,11 +60,11 @@ Farbe, Hintergrund, Schriftgröße, Buchstabenspacing,
 /* Gestaltung des Startbuttons beim Überfahren mit einer Schattenwirkung */
 
 body {
+  padding-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  
 }
 /* Gestaltung des Body-Elements, Zentrierung des
  Inhalts vertikal und horizontal, vollständige Anzeige
@@ -103,8 +103,13 @@ body {
   backface-visibility: visible;
   background-size: cover;
 }
-/* Gestaltung der Kartenseiten mit festen Abmessungen, 
-absoluter Positionierung, sichtbarer Rückseite, */
+/* Styling for the card sides with fixed dimensions, absolute positioning, visible backface, cover background size, and rotated 180 degrees along the Y-axis */
+
+.front-side {
+  transform: rotateY(0deg);
+}
+/* Styling for the front side of the card, resetting the Y-axis rotation */
+
 
 
 .error-msg {

@@ -1,5 +1,4 @@
-let cards = [];
-// Array zum Speichern von Kartenelementen
+
 let flippedCard = false;
 // Flag zum Verfolgen, ob eine Karte umgedreht ist
 let lockBoard = false;
@@ -57,6 +56,7 @@ function unflipCards() {
   setTimeout(() => {
     changeVisibility(firstCard, false);
     changeVisibility(secondCard, false);
+    
     resetBoard();
   }, 1000);
 }
@@ -96,11 +96,10 @@ async function getImages(apiUrl) {
     console.error("Fehler beim Abrufen der Bilder:", error);
   }
 }
-
 function createCard(imageUrl, index) {
   const card = document.createElement("div");
   card.classList.add("card");
-  card.dataset.card = index;
+  
 
   const frontSide = document.createElement("div");
   frontSide.classList.add("card-side", "front-side");
@@ -115,8 +114,7 @@ function createCard(imageUrl, index) {
   card.appendChild(backSide);
 
   card.addEventListener("click", flipCard);
-  cards += card;
-  console.log(cards);
+  
   return card;
 }
 
@@ -132,7 +130,7 @@ async function initializeGame() {
   doubledImages.sort(() => Math.random() - 0.5);
 
   const memoryGame = document.querySelector(".memory-game");
-  cards = document.querySelectorAll(".card");
+  cards = document.querySelectorAll(".card"); // Aktualisiere die Karten nach dem Reset
   doubledImages.forEach((image, index) => {
     const card = createCard(image.urls.small, index);
     memoryGame.appendChild(card);
