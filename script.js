@@ -1,18 +1,22 @@
 let cards = [];
+// Array zum Speichern von Kartenelementen
 const resetButton = document.querySelector("#reset");
+// Referenz auf den Zurücksetzen-Button (aktuell nicht verwendet)
 let flippedCard = false;
+// Flag zum Verfolgen, ob eine Karte umgedreht ist
 let lockBoard = false;
+// Flag, um das Klicken auf Karten zu verhindern, während das Spielfeld gesperrt ist
 let firstCard, secondCard;
+// Variablen zum Speichern der ersten und zweiten angeklickten Karten
 
 function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
+  // Verhindere das Umdrehen derselben Karte oder zu schnelles Klicken
   console.log(this.classList);
   this.classList.add("selected", "back-side");
   changeVisibility(this, true);
-  // this.querySelector(".back-side").style.visibility = "visible";
-  // this.querySelector(".front-side").style.visibility = "hidden";
-
+  // Drehe die Karte um und ändere ihre Sichtbarkeit
   console.log(this.classList);
   if (!flippedCard) {
     flippedCard = true;
@@ -24,6 +28,7 @@ function flipCard() {
 }
 
 function changeVisibility(card, backsideVisible) {
+  // Funktion zum Ändern der Sichtbarkeit der Karten-Seiten
   if (backsideVisible) {
     card.querySelector(".back-side").style.visibility = "visible";
     card.querySelector(".front-side").style.visibility = "hidden";
@@ -34,7 +39,7 @@ function changeVisibility(card, backsideVisible) {
 }
 
 function checkForMatch() {
-  // const isMatch = firstCard.dataset.card === secondCard.dataset.card;
+  // Überprüfe, ob die ausgewählten Karten übereinstimmen
   const isMatch =
     firstCard.querySelector(".back-side").style.backgroundImage ===
     secondCard.querySelector(".back-side").style.backgroundImage;
@@ -43,6 +48,7 @@ function checkForMatch() {
 }
 
 function disableCards() {
+  // Deaktiviere übereinstimmende Karten und entferne Event-Listener
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
 
@@ -52,17 +58,11 @@ function disableCards() {
 }
 
 function unflipCards() {
+  // Drehe Karten um, wenn sie nicht übereinstimmen
   lockBoard = true;
   setTimeout(() => {
     changeVisibility(firstCard, false);
     changeVisibility(secondCard, false);
-    // for (let i = 0; i < cards.length; i++) {
-    //     changeVisibility(cards[i], false);
-    // }
-    // cards.forEach(card => {
-    //     // card.classList.remove("selected", "front-side");
-    //     changeVisibility(card, false);
-    // });
     resetBoard();
   }, 1000);
 }
@@ -73,33 +73,30 @@ function resetBoard() {
 }
 
 function resetGame() {
-  /*cards.forEach(card => {
-        card.classList.remove("selected", "correct");
-        card.firstChild.classList.remove("flipped");
-        card.addEventListener('click', flipCard); });*/
-
+  // Setze das Spiel zurück, indem der Memory-Game-Container gelöscht wird
   const memoryGame = document.querySelector(".memory-game");
-  memoryGame.innerHTML = ""; // Entferne alle Kinder-Elemente
-
+  memoryGame.innerHTML = "";
   [flippedCard, lockBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
 }
 
 function getTheme() {
+  // Hole den Wert des Themen-Eingabefeldes
   return document.getElementById("theme-input").value.trim();
 }
 
-//
+// Logik für die Anzahl-Auswahl
 const numberSelect = document.getElementById("numberSelect");
 const resultElement = document.getElementById("result");
 
 function updateValue() {
+  // Aktualisiere den ausgewählten Wert aus der Anzahl-Auswahl
   const selectedValue = parseInt(numberSelect.value);
   console.log("Eingegebener Wert:", selectedValue);
   return selectedValue;
 }
-//
 
+// Bilder von der Unsplash-API abrufen
 async function getImages(apiUrl) {
   try {
     const response = await fetch(apiUrl);
@@ -109,7 +106,9 @@ async function getImages(apiUrl) {
     console.error("Fehler beim Abrufen der Bilder:", error);
   }
 }
+
 function createCard(imageUrl, index) {
+  // Erstelle ein Karten-Element mit Vorder- und Rückseite
   const card = document.createElement("div");
   card.classList.add("card");
   card.dataset.card = index;
@@ -132,8 +131,9 @@ function createCard(imageUrl, index) {
   return card;
 }
 
+// Initialisiere das Spiel durch Abrufen von Bildern und Erstellen von Karten
 async function initializeGame() {
-  resetGame(); // Füge diese Zeile hinzu, um das Spiel zurückzusetzen, bevor du neue Karten erstellst
+  resetGame();
   const value = updateValue();
   const theme = getTheme();
   const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apikey}&count=${value}&query=${theme}`;
@@ -143,7 +143,7 @@ async function initializeGame() {
   doubledImages.sort(() => Math.random() - 0.5);
 
   const memoryGame = document.querySelector(".memory-game");
-  cards = document.querySelectorAll(".card"); // Aktualisiere die Karten nach dem Reset
+  cards = document.querySelectorAll(".card");
   doubledImages.forEach((image, index) => {
     const card = createCard(image.urls.small, index);
     memoryGame.appendChild(card);
@@ -151,6 +151,7 @@ async function initializeGame() {
 }
 
 function startGame() {
+  // Starte das Spiel, indem Eingaben validiert und das Spiel initialisiert wird
   const themeInput = document.getElementById("theme-input");
   const errorMsg1 = document.querySelector(".error-msg1");
   const numberSelect = document.getElementById("numberSelect");
@@ -158,11 +159,9 @@ function startGame() {
   let themeerror = false;
   let numbererror = false;
   if (themeInput.value.trim() === "") {
-    // Zeige die Fehlermeldung an, wenn das Feld nicht ausgefüllt ist
     errorMsg1.style.display = "block";
     themeerror = true;
   } else {
-    // Verberge die Fehlermeldung, wenn das Feld ausgefüllt ist
     errorMsg1.style.display = "none";
   }
 
@@ -174,7 +173,6 @@ function startGame() {
   }
 
   if (!themeerror && !numbererror) {
-    // Starte das Spiel nur, wenn keine Fehler vorliegen
     initializeGame();
   }
 }

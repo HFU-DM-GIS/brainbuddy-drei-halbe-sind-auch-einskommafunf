@@ -4,6 +4,8 @@
   box-sizing: border-box;
   font-family: monospace;
 }
+/* Resetting default margin, padding, and box-sizing for all elements, using monospace font-family */
+
 .container {
   position: relative;
   display: flex;
@@ -14,18 +16,24 @@
   background: rgb(143, 176, 188);
   padding: 40px 60px;
 }
+/* Styling for the main container of the page, a flex container with vertical alignment, background color, and padding */
+
 h1 {
   font-size: 3em;
   color: rgb(8, 2, 2);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
+/* Styling for the main heading with increased font size, specific color, uppercase text, and letter spacing */
+
 h5 {
   font-size: 1em;
   color: black;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
+/* Styling for a subheading with normal font size, black color, uppercase text, and letter spacing */
+
 .start {
   padding: 15px 20px;
   color: rgb(3, 3, 3);
@@ -35,12 +43,16 @@ h5 {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
-  font-weight: 600; 
+  font-weight: 600;
   transition-duration: 0.5s;
 }
+/* Styling for the start button with padding, color, background, font size, letter spacing, text transformation, cursor, font weight, and a smooth transition */
+
 .start:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
+/* Styling for the start button when hovered, adding a box shadow effect */
+
 body {
   display: flex;
   justify-content: center;
@@ -48,16 +60,20 @@ body {
   height: 100vh;
   margin: 0;
 }
+/* Styling for the body element, centering its content vertically and horizontally, with full viewport height and no margin */
+
 .memory-game {
   display: grid;
   grid-template-columns: repeat(4, 100px);
   gap: 10px;
 }
+/* Styling for the memory game grid, using grid layout with 4 columns and 10px gap */
+
 .card {
   width: 100px;
   height: 100px;
-  background:transparent;
-  background-size:cover;
+  background: transparent;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,24 +82,37 @@ body {
   transition: transform 0.5s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
+/* Styling for the memory game cards with fixed dimensions, transparent background, cover background size, centered content, font size, pointer cursor, smooth transform transition, and a box shadow effect */
+
 .card.flipped {
   transform: rotateY(180deg);
 }
+/* Styling for flipped cards, rotating them 180 degrees along the Y-axis */
+
 .card-side {
   width: 100px;
   height: 100px;
   position: absolute;
-  backface-visibility:visible;
-  background-size:cover;
+  backface-visibility: visible;
+  background-size: cover;
   transform: rotateY(180deg);
 }
+/* Styling for the card sides with fixed dimensions, absolute positioning, visible backface, cover background size, and rotated 180 degrees along the Y-axis */
+
 .front-side {
   transform: rotateY(0deg);
-}/*
+}
+/* Styling for the front side of the card, resetting the Y-axis rotation */
+
+/*
 .back-side {
   transform: rotateY(180deg);
-}*/
+}
+*/
+/* Commented out styling for the back side of the card, rotating it 180 degrees along the Y-axis (not currently in use) */
+
 .error-msg {
   color: red;
   text-align: center;
 }
+/* Styling for error messages with red color and centered text alignment */
