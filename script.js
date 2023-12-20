@@ -160,6 +160,7 @@ function startGame() {
   }
 
   if (!themeerror && !numbererror) {
+    playSound("/soundfiles/mixkit-video-game-treasure-2066.wav");
     initializeGame();
   }
 }
