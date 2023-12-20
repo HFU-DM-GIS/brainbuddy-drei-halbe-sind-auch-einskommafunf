@@ -110,12 +110,7 @@ body {
 }
 /* Styling for the front side of the card, resetting the Y-axis rotation */
 
-/*
-.back-side {
-  transform: rotateY(180deg);
-}
-*/
-/* Commented out styling for the back side of the card, rotating it 180 degrees along the Y-axis (not currently in use) */
+
 
 .error-msg {
   color: red;

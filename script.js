@@ -61,13 +61,7 @@ function unflipCards() {
   setTimeout(() => {
     changeVisibility(firstCard, false);
     changeVisibility(secondCard, false);
-    // for (let i = 0; i < cards.length; i++) {
-    //     changeVisibility(cards[i], false);
-    // }
-    // cards.forEach(card => {
-    //     // card.classList.remove("selected", "front-side");
-    //     changeVisibility(card, false);
-    // });
+    
     resetBoard();
   }, 1000);
 }
