@@ -2,9 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: monospace;
+  font-family: Monospace;
 }
-/* Resetting default margin, padding, and box-sizing for all elements, using monospace font-family */
+/* Setzen von Standardwerten für Margin, Padding und
+ Box-Modell für alle Elemente und Festlegen der Schriftart auf Monospace */
 
 .container {
   position: relative;
@@ -16,7 +17,8 @@
   background: rgb(143, 176, 188);
   padding: 10px 20px; 
 }
-/* Styling for the main container of the page, a flex container with vertical alignment, background color, and padding */
+/* Gestaltung des Hauptcontainers der Seite als 
+Flex-Container mit vertikaler Ausrichtung, Hintergrundfarbe und Padding */
 
 h1 {
   font-size: 3em;
@@ -24,7 +26,8 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
-/* Styling for the main heading with increased font size, specific color, uppercase text, and letter spacing */
+/* Gestaltung der Hauptüberschrift mit erhöhter
+ Schriftgröße, bestimmter Farbe, Großschreibung und Buchstabenspacing */
 
 h5 {
   font-size: 1em;
@@ -32,7 +35,8 @@ h5 {
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
-/* Styling for a subheading with normal font size, black color, uppercase text, and letter spacing */
+/* Gestaltung einer Unterüberschrift mit normaler 
+Schriftgröße, schwarzer Farbe, Großschreibung und Buchstabenspacing */
 
 .start {
   padding: 15px 20px;
@@ -46,12 +50,14 @@ h5 {
   font-weight: 600;
   transition-duration: 0.5s;
 }
-/* Styling for the start button with padding, color, background, font size, letter spacing, text transformation, cursor, font weight, and a smooth transition */
+/* Gestaltung des Startbuttons mit Padding, 
+Farbe, Hintergrund, Schriftgröße, Buchstabenspacing,
+ Großschreibung, Cursor, Schriftgewicht und sanfter Transition */
 
 .start:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
-/* Styling for the start button when hovered, adding a box shadow effect */
+/* Gestaltung des Startbuttons beim Überfahren mit einer Schattenwirkung */
 
 body {
   padding-top: 100px;
@@ -60,14 +66,16 @@ body {
   align-items: center;
   
 }
-/* Styling for the body element, centering its content vertically and horizontally, with full viewport height and no margin */
+/* Gestaltung des Body-Elements, Zentrierung des
+ Inhalts vertikal und horizontal, vollständige Anzeige
+  im Viewport und keine Ränder */
 
 .memory-game {
   display: grid;
   grid-template-columns: repeat(4, 100px);
   gap: 10px;
 }
-/* Styling for the memory game grid, using grid layout with 4 columns and 10px gap */
+/* Gestaltung des Memory-Spiels als Raster mit 4 Spalten und 10px Abstand */
 
 .card {
   width: 100px;
@@ -82,12 +90,11 @@ body {
   transition: transform 0.5s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
-/* Styling for the memory game cards with fixed dimensions, transparent background, cover background size, centered content, font size, pointer cursor, smooth transform transition, and a box shadow effect */
+/* Gestaltung der Memory-Spielkarten mit festen Abmessungen,
+ transparentem Hintergrund, Anpassung der Hintergrundgröße, 
+ zentriertem Inhalt, Schriftgröße, Cursor, 
+ sanfter Transformationsübergang und Schatten */
 
-.card.flipped {
-  transform: rotateY(180deg);
-}
-/* Styling for flipped cards, rotating them 180 degrees along the Y-axis */
 
 .card-side {
   width: 100px;
@@ -95,18 +102,24 @@ body {
   position: absolute;
   backface-visibility: visible;
   background-size: cover;
-  transform: rotateY(180deg);
 }
 /* Styling for the card sides with fixed dimensions, absolute positioning, visible backface, cover background size, and rotated 180 degrees along the Y-axis */
 
 .front-side {
   transform: rotateY(0deg);
-}/*
+}
+/* Styling for the front side of the card, resetting the Y-axis rotation */
+
+/*
 .back-side {
   transform: rotateY(180deg);
-}*/
+}
+*/
+/* Commented out styling for the back side of the card, rotating it 180 degrees along the Y-axis (not currently in use) */
+
 .error-msg {
   color: red;
   text-align: center;
 }
-/* Styling for error messages with red color and centered text alignment */
+/* Gestaltung von Fehlermeldungen mit roter Farbe 
+und zentrierter Textausrichtung */

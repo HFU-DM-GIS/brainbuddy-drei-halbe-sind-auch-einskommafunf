@@ -3,6 +3,7 @@ let flippedCard = false;
 // Flag zum Verfolgen, ob eine Karte umgedreht ist
 let lockBoard = false;
 // Flag, um das Klicken auf Karten zu verhindern, während das Spielfeld gesperrt ist
+
 let firstCard, secondCard;
 // Variablen zum Speichern der ersten und zweiten angeklickten Karten
 
