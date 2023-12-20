@@ -1,5 +1,4 @@
-let cards = [];
-const resetButton = document.querySelector("#reset");
+
 let flippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
@@ -10,8 +9,6 @@ function flipCard() {
   console.log(this.classList);
   this.classList.add("selected", "back-side");
   changeVisibility(this, true);
-  // this.querySelector(".back-side").style.visibility = "visible";
-  // this.querySelector(".front-side").style.visibility = "hidden";
 
   console.log(this.classList);
   if (!flippedCard) {
@@ -34,7 +31,7 @@ function changeVisibility(card, backsideVisible) {
 }
 
 function checkForMatch() {
-  // const isMatch = firstCard.dataset.card === secondCard.dataset.card;
+  
   const isMatch =
     firstCard.querySelector(".back-side").style.backgroundImage ===
     secondCard.querySelector(".back-side").style.backgroundImage;
@@ -56,13 +53,7 @@ function unflipCards() {
   setTimeout(() => {
     changeVisibility(firstCard, false);
     changeVisibility(secondCard, false);
-    // for (let i = 0; i < cards.length; i++) {
-    //     changeVisibility(cards[i], false);
-    // }
-    // cards.forEach(card => {
-    //     // card.classList.remove("selected", "front-side");
-    //     changeVisibility(card, false);
-    // });
+    
     resetBoard();
   }, 1000);
 }
@@ -73,10 +64,7 @@ function resetBoard() {
 }
 
 function resetGame() {
-  /*cards.forEach(card => {
-        card.classList.remove("selected", "correct");
-        card.firstChild.classList.remove("flipped");
-        card.addEventListener('click', flipCard); });*/
+  
 
   const memoryGame = document.querySelector(".memory-game");
   memoryGame.innerHTML = ""; // Entferne alle Kinder-Elemente
@@ -109,10 +97,10 @@ async function getImages(apiUrl) {
     console.error("Fehler beim Abrufen der Bilder:", error);
   }
 }
-function createCard(imageUrl, index) {
+function createCard(imageUrl) {
   const card = document.createElement("div");
   card.classList.add("card");
-  card.dataset.card = index;
+  
 
   const frontSide = document.createElement("div");
   frontSide.classList.add("card-side", "front-side");
@@ -127,8 +115,7 @@ function createCard(imageUrl, index) {
   card.appendChild(backSide);
 
   card.addEventListener("click", flipCard);
-  cards += card;
-  console.log(cards);
+  
   return card;
 }
 
@@ -143,7 +130,7 @@ async function initializeGame() {
   doubledImages.sort(() => Math.random() - 0.5);
 
   const memoryGame = document.querySelector(".memory-game");
-  cards = document.querySelectorAll(".card"); // Aktualisiere die Karten nach dem Reset
+  cards = document.querySelectorAll(".card"); 
   doubledImages.forEach((image, index) => {
     const card = createCard(image.urls.small, index);
     memoryGame.appendChild(card);

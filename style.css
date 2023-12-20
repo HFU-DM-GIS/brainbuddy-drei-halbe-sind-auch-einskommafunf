@@ -12,7 +12,7 @@
   align-items: center;
   gap: 30px;
   background: rgb(143, 176, 188);
-  padding: 40px 60px;
+  padding: 10px 20px; 
 }
 h1 {
   font-size: 3em;
@@ -42,11 +42,11 @@ h5 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 body {
+  padding-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  
 }
 .memory-game {
   display: grid;
@@ -79,10 +79,7 @@ body {
 }
 .front-side {
   transform: rotateY(0deg);
-}/*
-.back-side {
-  transform: rotateY(180deg);
-}*/
+}
 .error-msg {
   color: red;
   text-align: center;
