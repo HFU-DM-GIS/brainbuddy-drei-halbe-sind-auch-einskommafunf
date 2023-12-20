@@ -1,7 +1,5 @@
 let cards = [];
 // Array zum Speichern von Kartenelementen
-const resetButton = document.querySelector("#reset");
-// Referenz auf den Zurücksetzen-Button (aktuell nicht verwendet)
 let flippedCard = false;
 // Flag zum Verfolgen, ob eine Karte umgedreht ist
 let lockBoard = false;
@@ -13,14 +11,10 @@ let firstCard, secondCard;
 function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
-  // Verhindere das Umdrehen derselben Karte oder zu schnelles Klicken
-  console.log(this.classList);
+
   this.classList.add("selected", "back-side");
   changeVisibility(this, true);
-  // this.querySelector(".back-side").style.visibility = "visible";
-  // this.querySelector(".front-side").style.visibility = "hidden";
 
-  console.log(this.classList);
   if (!flippedCard) {
     flippedCard = true;
     firstCard = this;
@@ -42,7 +36,6 @@ function changeVisibility(card, backsideVisible) {
 }
 
 function checkForMatch() {
-  // const isMatch = firstCard.dataset.card === secondCard.dataset.card;
   const isMatch =
     firstCard.querySelector(".back-side").style.backgroundImage ===
     secondCard.querySelector(".back-side").style.backgroundImage;
@@ -51,7 +44,6 @@ function checkForMatch() {
 }
 
 function disableCards() {
-  // Deaktiviere übereinstimmende Karten und entferne Event-Listener
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
 
@@ -61,7 +53,6 @@ function disableCards() {
 }
 
 function unflipCards() {
-  // Drehe Karten um, wenn sie nicht übereinstimmen
   lockBoard = true;
   setTimeout(() => {
     changeVisibility(firstCard, false);
@@ -76,11 +67,6 @@ function resetBoard() {
 }
 
 function resetGame() {
-  /*cards.forEach(card => {
-        card.classList.remove("selected", "correct");
-        card.firstChild.classList.remove("flipped");
-        card.addEventListener('click', flipCard); });*/
-
   const memoryGame = document.querySelector(".memory-game");
   memoryGame.innerHTML = "";
   [flippedCard, lockBoard] = [false, false];
@@ -88,16 +74,13 @@ function resetGame() {
 }
 
 function getTheme() {
-  // Hole den Wert des Themen-Eingabefeldes
   return document.getElementById("theme-input").value.trim();
 }
 
 // Logik für die Anzahl-Auswahl
 const numberSelect = document.getElementById("numberSelect");
-const resultElement = document.getElementById("result");
 
 function updateValue() {
-  // Aktualisiere den ausgewählten Wert aus der Anzahl-Auswahl
   const selectedValue = parseInt(numberSelect.value);
   console.log("Eingegebener Wert:", selectedValue);
   return selectedValue;
@@ -115,7 +98,6 @@ async function getImages(apiUrl) {
 }
 
 function createCard(imageUrl, index) {
-  // Erstelle ein Karten-Element mit Vorder- und Rückseite
   const card = document.createElement("div");
   card.classList.add("card");
   card.dataset.card = index;
@@ -158,7 +140,6 @@ async function initializeGame() {
 }
 
 function startGame() {
-  // Starte das Spiel, indem Eingaben validiert und das Spiel initialisiert wird
   const themeInput = document.getElementById("theme-input");
   const errorMsg1 = document.querySelector(".error-msg1");
   const numberSelect = document.getElementById("numberSelect");
