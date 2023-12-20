@@ -16,7 +16,9 @@ function flipCard() {
   console.log(this.classList);
   this.classList.add("selected", "back-side");
   changeVisibility(this, true);
-  // Drehe die Karte um und ändere ihre Sichtbarkeit
+  // this.querySelector(".back-side").style.visibility = "visible";
+  // this.querySelector(".front-side").style.visibility = "hidden";
+
   console.log(this.classList);
   if (!flippedCard) {
     flippedCard = true;
@@ -39,7 +41,7 @@ function changeVisibility(card, backsideVisible) {
 }
 
 function checkForMatch() {
-  // Überprüfe, ob die ausgewählten Karten übereinstimmen
+  // const isMatch = firstCard.dataset.card === secondCard.dataset.card;
   const isMatch =
     firstCard.querySelector(".back-side").style.backgroundImage ===
     secondCard.querySelector(".back-side").style.backgroundImage;
@@ -73,7 +75,11 @@ function resetBoard() {
 }
 
 function resetGame() {
-  // Setze das Spiel zurück, indem der Memory-Game-Container gelöscht wird
+  /*cards.forEach(card => {
+        card.classList.remove("selected", "correct");
+        card.firstChild.classList.remove("flipped");
+        card.addEventListener('click', flipCard); });*/
+
   const memoryGame = document.querySelector(".memory-game");
   memoryGame.innerHTML = "";
   [flippedCard, lockBoard] = [false, false];

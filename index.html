@@ -23,13 +23,8 @@
       <!-- Container-Div für den gesamten Inhalt -->
 
       <h1>Brain Buddy</h1>
-      <!-- Überschrift für das Memory-Spiel -->
-
       <!--<div class="description"></div>-->
-      <!-- Auskommentiertes leeres Div für eine Beschreibung (derzeit nicht in Verwendung) -->
-
-      <h5>fülle die Felder aus, um zu starten</h5>
-      <!-- Untertitel, der darauf hinweist, die Felder auszufüllen, um zu starten -->
+      <h5>fülle die felder aus um zu starten</h5>
 
       <form id="theme-form">
         <!-- Formular zum Eingeben eines Themas -->
@@ -38,59 +33,27 @@
         <!-- Beschriftung für das Eingabefeld für das Thema -->
 
         <input type="text" id="theme-input" required>
-        <!-- Texteingabefeld für die Eingabe des Themas, mit dem required-Attribut -->
-
-      </form>
-
-      <form action="">
-        <!-- Formular zum Auswählen der Anzahl der Karten -->
-
-        <label for="numberSelect">Kärtchenanzahl:</label>
-        <!-- Beschriftung für die Auswahl der Anzahl der Karten -->
-
-        <select id="numberSelect" onchange="updateValue()" required>
-          <!-- Dropdown-Menü zum Auswählen der Anzahl der Karten, mit dem onchange-Ereignis, das die Funktion updateValue auslöst -->
-
-          <option value="">-Anzahl wählen-</option>
-          <!-- Standardoption, die dazu auffordert, die Anzahl der Karten zu wählen -->
-
-          <option value="4">8</option>
-          <!-- Option für 8 Karten -->
-
-          <option value="6">12</option>
-          <!-- Option für 12 Karten -->
-
-          <option value="8">16</option>
-          <!-- Option für 16 Karten -->
-
-          <option value="10">20</option>
-          <!-- Option für 20 Karten -->
-
-        </select>
-      </form>
-
-      <div class="error-msg">
-        <!-- Container für Fehlermeldungen -->
-
-        <div class="error-msg1" style="display: none;">! Bitte gib ein Thema für dein Memoryspiel ein.</div>
-        <!-- Fehlermeldung für fehlende Eingabe des Themas, zu Beginn ausgeblendet -->
-
-        <div class="error-msg2" style="display: none;">! Bitte gebe an, mit wie vielen Kärtchen du spielen möchtest.</div>
-        <!-- Fehlermeldung für fehlende Auswahl der Kartenanzahl, zu Beginn ausgeblendet -->
-
-      </div>
-
-      <button class="start" type="button" onclick="startGame()">Starte das Spiel</button>
-      <!-- Button zum Starten des Spiels, der die Funktion startGame auslöst -->
-
-      <div class="memory-game"></div>
-      <!-- Container-Div für das Memory-Spiel -->
-
-      <!--
-        <button id ="reset" class="reset">Reset</button>
-      -->
-      <!-- Auskommentierter Button zum Zurücksetzen des Spiels (derzeit nicht in Verwendung) -->
-
+    </form>
+  <form action="">
+      <label for="numberSelect">Kärtchenanzahl:</label>
+      <select id="numberSelect" onchange="updateValue()" required>
+        <option value="">-Anzahl wählen-</option>
+        <option value="4">8</option>
+        <option value="6">12</option>
+        <option value="8">16</option>
+        <option value="10">20</option>
+         </select>
+    </form>
+ <div class="error-msg">
+    <div class="error-msg1" style="display: none;">! Bitte gib ein Thema für dein Memoryspiel ein.</div>
+    <div class="error-msg2" style="display: none;">! Bitte gebe an mit wie vielen Kärtchen du spielen möchtest.</div>
+ </div>   
+    <button class="start" type="button" onclick="startGame()">Starte das Spiel</button>
+    <div class="memory-game"></div>
+  <!--
+    <button id ="reset" class="reset">Reset</button>
+  -->
+     
     </div>
   </body>
 </html>
