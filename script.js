@@ -37,6 +37,7 @@ function changeVisibility(card, backsideVisible) {
 }
 
 function checkForMatch() {
+  //Karten nach Match vergleichen
   const isMatch =
     firstCard.querySelector(".back-side").style.backgroundImage ===
     secondCard.querySelector(".back-side").style.backgroundImage;
@@ -45,6 +46,7 @@ function checkForMatch() {
 }
 
 function disableCards() {
+  //Karten die zusammengehören
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
 
@@ -57,9 +59,11 @@ function disableCards() {
   console.log(counter);
 
   winningsound();
+  //wird aufgerufen aber nur augeführt wenn counter und selectedValue gleich sind
 }
 
 function unflipCards() {
+  //zurückdrehen der Karten
   lockBoard = true;
   setTimeout(() => {
     changeVisibility(firstCard, false);
@@ -70,6 +74,7 @@ function unflipCards() {
 }
 
 function resetBoard() {
+  //Informationen der geflipped Karten auf Ursprung setzen
   [flippedCard, lockBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
 }
