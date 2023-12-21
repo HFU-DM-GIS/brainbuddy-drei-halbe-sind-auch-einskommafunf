@@ -7,6 +7,8 @@ let lockBoard = false;
 let firstCard, secondCard;
 // Variablen zum Speichern der ersten und zweiten angeklickten Karten
 
+let counter=0;
+
 function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
@@ -50,6 +52,11 @@ function disableCards() {
   secondCard.classList.add("correct");
   playSound("/soundfiles/mixkit-instant-win-2021.wav");
   resetBoard();
+
+  counter++;
+  console.log(counter);
+
+  winningsound();
 }
 
 function unflipCards() {
@@ -167,4 +174,12 @@ function startGame() {
 function playSound(soundFile) {
   const audio = new Audio(soundFile);
   audio.play();
+}
+
+
+function winningsound(){
+  console.log("Test")
+  if (counter===Number(numberSelect.value))
+  
+  playSound("/soundfiles/mixkit-video-game-treasure-2066.wav");
 }
