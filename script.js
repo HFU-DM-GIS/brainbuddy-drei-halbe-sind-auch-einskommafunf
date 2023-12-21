@@ -184,7 +184,9 @@ function playSound(soundFile) {
 
 function winningsound(){
   console.log("Test")
-  if (counter===Number(numberSelect.value))
+  if (counter===Number(numberSelect.value)){
   
-  playSound("/soundfiles/mixkit-video-game-treasure-2066.wav");
+   playSound("soundfiles/brass-fanfare-with-timpani-and-winchimes-reverberated-146260.mp3");
+   counter=0;
+ }
 }
