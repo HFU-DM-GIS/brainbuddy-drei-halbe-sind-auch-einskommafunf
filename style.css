@@ -103,14 +103,8 @@ body {
   backface-visibility: visible;
   background-size: cover;
 }
-/* Styling for the card sides with fixed dimensions, absolute positioning, visible backface, cover background size, and rotated 180 degrees along the Y-axis */
-
-.front-side {
-  transform: rotateY(0deg);
-}
-/* Styling for the front side of the card, resetting the Y-axis rotation */
-
-
+/* Styling for the card sides with fixed dimensions, absolute positioning, 
+visible backface, cover background size, and rotated 180 degrees along the Y-axis */
 
 .error-msg {
   color: red;
