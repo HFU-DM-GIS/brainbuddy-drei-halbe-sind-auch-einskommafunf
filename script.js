@@ -6,12 +6,13 @@ let lockBoard = false;
 
 let firstCard, secondCard;
 // Variablen zum Speichern der ersten und zweiten angeklickten Karten
+// Könnte auch stattdessen durch einen Array gelöst werden
 
 let counter=0;
 
 function flipCard() {
   if (lockBoard) return;
-  if (this === firstCard) return;
+  if (this === firstCard) return; // Diese beiden könnten als ein einzellnes IF mit einem ODER zusammengefasst werden
   playSound("/soundfiles/CardsFlipCard_S08SP.149.wav");
   this.classList.add("selected", "back-side");
   changeVisibility(this, true);
@@ -21,7 +22,6 @@ function flipCard() {
   } else {
     secondCard = this;
     checkForMatch();
-    
   }
 }
 
@@ -38,6 +38,7 @@ function changeVisibility(card, backsideVisible) {
 
 function checkForMatch() {
   //Karten nach Match vergleichen
+  // Evtl lösbar durch ein ID System anstatt durch die Hintergrundbilder
   const isMatch =
     firstCard.querySelector(".back-side").style.backgroundImage ===
     secondCard.querySelector(".back-side").style.backgroundImage;
@@ -60,6 +61,7 @@ function disableCards() {
 
   winningsound();
   //wird aufgerufen aber nur augeführt wenn counter und selectedValue gleich sind
+  // Wo steht das ?
 }
 
 function unflipCards() {
@@ -75,6 +77,7 @@ function unflipCards() {
 
 function resetBoard() {
   //Informationen der geflipped Karten auf Ursprung setzen
+  // Funktionsname ist etwas verwirrend, da es nicht das Board zurücksetzt, sondern die Karten
   [flippedCard, lockBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
 }
@@ -82,6 +85,7 @@ function resetBoard() {
 function resetGame() {
   const memoryGame = document.querySelector(".memory-game");
   memoryGame.innerHTML = "";
+  //Der nächste Teil könnte durch den Funktionsaufruf von resetBoard() ersetzt werden
   [flippedCard, lockBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
 }
@@ -113,12 +117,11 @@ function createCard(imageUrl, index) {
   const card = document.createElement("div");
   card.classList.add("card");
   
-
   const frontSide = document.createElement("div");
   frontSide.classList.add("card-side", "front-side");
   frontSide.style.backgroundImage = 'url("./images/fun-memory.png")';
   frontSide.style.visibility = "visible";
-
+  // Evtl hier die vorhin erwähnte ID zuordnen
   const backSide = document.createElement("div");
   backSide.classList.add("card-side", "back-side");
   backSide.style.backgroundImage = `url(${imageUrl})`;
@@ -140,6 +143,7 @@ async function initializeGame() {
 
   const images = await getImages(apiUrl);
   const doubledImages = [...images, ...images];
+  //Hier das gesammte Audio bereits laden, um Ladefehler zu vermeiden
   doubledImages.sort(() => Math.random() - 0.5);
 
   const memoryGame = document.querySelector(".memory-game");
@@ -183,7 +187,7 @@ function playSound(soundFile) {
 
 
 function winningsound(){
-  console.log("Test")
+ // console.log("Test")
   if (counter===Number(numberSelect.value)){
   
    playSound("soundfiles/brass-fanfare-with-timpani-and-winchimes-reverberated-146260.mp3");
