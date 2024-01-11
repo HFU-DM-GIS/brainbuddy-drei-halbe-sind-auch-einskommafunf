@@ -112,3 +112,8 @@ visible backface, cover background size, and rotated 180 degrees along the Y-axi
 }
 /* Gestaltung von Fehlermeldungen mit roter Farbe 
 und zentrierter Textausrichtung */
+
+
+.counter-Check {
+text-align: center;
+}

@@ -9,6 +9,7 @@ let firstCard, secondCard;
 // Könnte auch stattdessen durch einen Array gelöst werden
 
 let counter=0;
+let counterCheck=0;
 
 function flipCard() {
   if (lockBoard || this === firstCard) return;
@@ -43,6 +44,7 @@ function checkForMatch() {
     secondCard.querySelector(".back-side").style.backgroundImage;
 
   isMatch ? disableCards() : unflipCards();
+  counterCheck++;
 }
 
 function disableCards() {
