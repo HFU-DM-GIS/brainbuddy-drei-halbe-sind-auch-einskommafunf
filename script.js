@@ -54,7 +54,7 @@ function disableCards() {
   firstCard.classList.add("correct");
   secondCard.classList.add("correct");
   playSound("/soundfiles/mixkit-instant-win-2021.wav");
-  resetBoard();
+  resetCards();
 
   counter++;
   console.log(counter);
@@ -71,13 +71,13 @@ function unflipCards() {
     changeVisibility(firstCard, false);
     changeVisibility(secondCard, false);
     
-    resetBoard();
+    resetCards();
   }, 1000);
 }
 
-function resetBoard() {
+function resetCards() {
   //Informationen der geflipped Karten auf Ursprung setzen
-  // Funktionsname ist etwas verwirrend, da es nicht das Board zurücksetzt, sondern die Karten
+  
   [flippedCard, lockBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
 }
@@ -88,6 +88,7 @@ function resetGame() {
   //Der nächste Teil könnte durch den Funktionsaufruf von resetBoard() ersetzt werden
   [flippedCard, lockBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
+  counter=0;
 }
 
 function getTheme() {
