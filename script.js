@@ -11,8 +11,7 @@ let firstCard, secondCard;
 let counter=0;
 
 function flipCard() {
-  if (lockBoard) return;
-  if (this === firstCard) return; // Diese beiden könnten als ein einzellnes IF mit einem ODER zusammengefasst werden
+  if (lockBoard || this === firstCard) return;
   playSound("/soundfiles/CardsFlipCard_S08SP.149.wav");
   this.classList.add("selected", "back-side");
   changeVisibility(this, true);
@@ -85,9 +84,7 @@ function resetCards() {
 function resetGame() {
   const memoryGame = document.querySelector(".memory-game");
   memoryGame.innerHTML = "";
-  //Der nächste Teil könnte durch den Funktionsaufruf von resetBoard() ersetzt werden
-  [flippedCard, lockBoard] = [false, false];
-  [firstCard, secondCard] = [null, null];
+  resetCards();
   counter=0;
 }
 
