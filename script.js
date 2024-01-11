@@ -54,10 +54,7 @@ function disableCards() {
   secondCard.classList.add("correct");
   playSound("/soundfiles/mixkit-instant-win-2021.wav");
   resetCards();
-
   counter++;
-  console.log(counter);
-
   winningsound();
   //wird aufgerufen aber nur augeführt wenn counter und selectedValue gleich sind
   // Wo steht das ?
@@ -97,7 +94,6 @@ const numberSelect = document.getElementById("numberSelect");
 
 function updateValue() {
   const selectedValue = parseInt(numberSelect.value);
-  console.log("Eingegebener Wert:", selectedValue);
   return selectedValue;
 }
 
@@ -153,6 +149,7 @@ async function initializeGame() {
 }
 
 function startGame() {
+  //const apierror = ;
   const themeInput = document.getElementById("theme-input");
   const errorMsg1 = document.querySelector(".error-msg1");
   const numberSelect = document.getElementById("numberSelect");
@@ -185,7 +182,6 @@ function playSound(soundFile) {
 
 
 function winningsound(){
- // console.log("Test")
   if (counter===Number(numberSelect.value)){
   
    playSound("soundfiles/brass-fanfare-with-timpani-and-winchimes-reverberated-146260.mp3");
