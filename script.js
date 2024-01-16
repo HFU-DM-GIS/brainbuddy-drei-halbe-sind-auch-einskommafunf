@@ -8,10 +8,7 @@ let firstCard, secondCard;
 // Variablen zum Speichern der ersten und zweiten angeklickten Karten
 let counter=0;
 let counterCheck=0;
-
-/*const winningaudio = 
-const start-audio
-const flip-audio = /soundfiles/CardsFlipCard_S08SP.149.wav;*/
+const ErrorSound = "/soundfiles/ErrorToneChime_S08TE.597.wav";
 
 function flipCard() {
   if (lockBoard || this === firstCard) return;
@@ -47,6 +44,7 @@ function checkForMatch() {
 
   isMatch ? disableCards() : unflipCards();
   counterCheck++;
+  document.getElementById("counter-Check").innerHTML = "Versuche : " + counterCheck; //Aktualisieren des Counters
 }
 
 function disableCards() {
@@ -85,8 +83,11 @@ function resetCards() {
 function resetGame() {
   const memoryGame = document.querySelector(".memory-game");
   memoryGame.innerHTML = "";
+  document.getElementById("error-msg3").innerHTML = "";
   resetCards();
   counter=0;
+  counterCheck=0;
+  document.getElementById("counter-Check").innerHTML = "";
 }
 
 function getTheme() {
@@ -103,14 +104,22 @@ function updateValue() {
 
 // Bilder von der Unsplash-API abrufen
 async function getImages(apiUrl) {
-  try {
     const response = await fetch(apiUrl);
     const data = await response.json();
+    const ImageError = false;
+    if (data.errors != undefined) {
+      const ImageError = true;
+      document.getElementById("error-msg3").innerHTML = "Keine Bilder gefunden!";
+      playSound(ErrorSound); //Error Sound
+      return;
+   }
+    else {
+    playSound("/soundfiles/mixkit-video-game-treasure-2066.wav"); //Start Sound
     return data;
-  } catch (error) {
-    console.error("Fehler beim Abrufen der Bilder:", error);
+   }
   }
-}
+
+
 function createCard(imageUrl, index) {
   const card = document.createElement("div");
   card.classList.add("card");
@@ -150,10 +159,10 @@ async function initializeGame() {
     const card = createCard(image.urls.small, index);
     memoryGame.appendChild(card);
   });
+  document.getElementById("counter-Check").innerHTML = "Versuche : " + counterCheck;
 }
 
 function startGame() {
-  //const apierror = ;
   const themeInput = document.getElementById("theme-input");
   const errorMsg1 = document.querySelector(".error-msg1");
   const numberSelect = document.getElementById("numberSelect");
@@ -174,8 +183,10 @@ function startGame() {
     errorMsg2.style.display = "none";
   }
 
+  if (themeerror || numbererror){
+    playSound(ErrorSound); // Error Sound
+  }
   if (!themeerror && !numbererror) {
-    playSound("/soundfiles/mixkit-video-game-treasure-2066.wav");
     initializeGame();
   }
 }
