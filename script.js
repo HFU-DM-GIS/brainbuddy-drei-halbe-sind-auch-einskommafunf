@@ -6,10 +6,12 @@ let lockBoard = false;
 
 let firstCard, secondCard;
 // Variablen zum Speichern der ersten und zweiten angeklickten Karten
-// Könnte auch stattdessen durch einen Array gelöst werden
-
 let counter=0;
 let counterCheck=0;
+
+/*const winningaudio = 
+const start-audio
+const flip-audio = /soundfiles/CardsFlipCard_S08SP.149.wav;*/
 
 function flipCard() {
   if (lockBoard || this === firstCard) return;
