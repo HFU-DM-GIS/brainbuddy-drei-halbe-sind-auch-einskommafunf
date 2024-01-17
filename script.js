@@ -8,11 +8,16 @@ let firstCard, secondCard;
 // Variablen zum Speichern der ersten und zweiten angeklickten Karten
 let counter=0;
 let counterCheck=0;
+
 const ErrorSound = "/soundfiles/ErrorToneChime_S08TE.597.wav";
+const WinningSound = "/soundfiles/brass-fanfare-with-timpani-and-winchimes-reverberated-146260.mp3";
+const MatchSound = "/soundfiles/mixkit-instant-win-2021.wav";
+const StartSound = "/soundfiles/mixkit-video-game-treasure-2066.wav";
+const CardflipSound = "/soundfiles/CardsFlipCard_S08SP.149.wav";
 
 function flipCard() {
   if (lockBoard || this === firstCard) return;
-  playSound("/soundfiles/CardsFlipCard_S08SP.149.wav");
+  playSound(CardflipSound);
   this.classList.add("selected", "back-side");
   changeVisibility(this, true);
   if (!flippedCard) {
@@ -54,7 +59,7 @@ function disableCards() {
 
   firstCard.classList.add("correct");
   secondCard.classList.add("correct");
-  playSound("/soundfiles/mixkit-instant-win-2021.wav");
+  playSound(MatchSound);
   resetCards();
   counter++;
   winningsound();
@@ -114,7 +119,7 @@ async function getImages(apiUrl) {
       return;
    }
     else {
-    playSound("/soundfiles/mixkit-video-game-treasure-2066.wav"); //Start Sound
+    playSound(StartSound); //Start Sound
     return data;
    }
   }
@@ -150,7 +155,6 @@ async function initializeGame() {
 
   const images = await getImages(apiUrl);
   const doubledImages = [...images, ...images];
-  //Hier das gesammte Audio bereits laden, um Ladefehler zu vermeiden
   doubledImages.sort(() => Math.random() - 0.5);
 
   const memoryGame = document.querySelector(".memory-game");
@@ -199,7 +203,7 @@ function playSound(soundFile) {
 function winningsound(){
   if (counter===Number(numberSelect.value)){
   
-   playSound("soundfiles/brass-fanfare-with-timpani-and-winchimes-reverberated-146260.mp3");
+   playSound(WinningSound);
    counter=0;
  }
 }
