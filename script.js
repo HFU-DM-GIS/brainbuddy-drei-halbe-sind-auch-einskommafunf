@@ -19,7 +19,7 @@ function flipCard() {
   if (lockBoard || this === firstCard) return;
   playSound(CardflipSound);
   this.classList.add("selected", "back-side");
-  changeVisibility(this, true);
+  changeVisibility(this, true); //Karte wird umgedreht
   if (!flippedCard) {
     flippedCard = true;
     firstCard = this;
@@ -42,12 +42,18 @@ function changeVisibility(card, backsideVisible) {
 
 function checkForMatch() {
   //Karten nach Match vergleichen
-  // Evtl lösbar durch ein ID System anstatt durch die Hintergrundbilder
   const isMatch =
     firstCard.querySelector(".back-side").style.backgroundImage ===
     secondCard.querySelector(".back-side").style.backgroundImage;
 
   isMatch ? disableCards() : unflipCards();
+  /*
+  if (isMatch) {
+    disableCards();
+} else {
+    unflipCards();
+}
+*/
   counterCheck++;
   document.getElementById("counter-Check").innerHTML = "Versuche : " + counterCheck; //Aktualisieren des Counters
 }
@@ -87,8 +93,8 @@ function resetCards() {
 
 function resetGame() {
   const memoryGame = document.querySelector(".memory-game");
-  memoryGame.innerHTML = "";
-  document.getElementById("error-msg3").innerHTML = "";
+  memoryGame.innerHTML = ""; 
+  document.getElementById("error-msg3").innerHTML = ""; 
   resetCards();
   counter=0;
   counterCheck=0;
@@ -125,7 +131,7 @@ async function getImages(apiUrl) {
   }
 
 
-function createCard(imageUrl, index) {
+function createCard(imageUrl) {
   const card = document.createElement("div");
   card.classList.add("card");
   
@@ -133,7 +139,6 @@ function createCard(imageUrl, index) {
   frontSide.classList.add("card-side", "front-side");
   frontSide.style.backgroundImage = 'url("./images/fun-memory.png")';
   frontSide.style.visibility = "visible";
-  // Evtl hier die vorhin erwähnte ID zuordnen
   const backSide = document.createElement("div");
   backSide.classList.add("card-side", "back-side");
   backSide.style.backgroundImage = `url(${imageUrl})`;
@@ -158,19 +163,18 @@ async function initializeGame() {
   doubledImages.sort(() => Math.random() - 0.5);
 
   const memoryGame = document.querySelector(".memory-game");
-  cards = document.querySelectorAll(".card"); // Aktualisiere die Karten nach dem Reset
-  doubledImages.forEach((image, index) => {
-    const card = createCard(image.urls.small, index);
+  doubledImages.forEach((image) => {
+    const card = createCard(image.urls.small);
     memoryGame.appendChild(card);
   });
   document.getElementById("counter-Check").innerHTML = "Versuche : " + counterCheck;
 }
 
-function startGame() {
-  const themeInput = document.getElementById("theme-input");
-  const errorMsg1 = document.querySelector(".error-msg1");
-  const numberSelect = document.getElementById("numberSelect");
-  const errorMsg2 = document.querySelector(".error-msg2");
+function startGame() {//Funktion zum Starten des Spiels
+  const themeInput = document.getElementById("theme-input"); //Thema
+  const errorMsg1 = document.querySelector(".error-msg1"); 
+  const numberSelect = document.getElementById("numberSelect"); //Anzahl der Karten
+  const errorMsg2 = document.querySelector(".error-msg2"); 
   let themeerror = false;
   let numbererror = false;
   if (themeInput.value.trim() === "") {
